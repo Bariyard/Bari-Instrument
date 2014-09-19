@@ -1,6 +1,6 @@
 /*
-     File: MyAUTemplate.cpp
- Abstract: MyAUTemplate.h
+     File: BariInstrument.cpp
+ Abstract: BariInstrument.h
   Version: 1.2
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
@@ -44,7 +44,7 @@
  Copyright (C) 2012 Apple Inc. All Rights Reserved.
  
 */
-#include "MyAUTemplate.h"
+#include "BariInstrument.h"
  
 static const UInt32 kMaxActiveNotes = 8;
 
@@ -54,21 +54,21 @@ const double twopi = 2.0 * 3.14159265358979;
 
 inline double pow5(double x) { double x2 = x*x; return x2*x2*x; }
 
-#pragma mark MyAUTemplate Methods
+#pragma mark BariInstrument Methods
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-AUDIOCOMPONENT_ENTRY(AUMusicDeviceFactory, MyAUTemplate)
+AUDIOCOMPONENT_ENTRY(AUMusicDeviceFactory, BariInstrument)
 
 static const AudioUnitParameterID kGlobalVolumeParam = 0;
 static const CFStringRef kGlobalVolumeName = CFSTR("global volume");
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//	MyAUTemplate::MyAUTemplate
+//	BariInstrument::BariInstrument
 //
 // This synth has No inputs, One output
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-MyAUTemplate::MyAUTemplate(ComponentInstance inComponentInstance)
+BariInstrument::BariInstrument(ComponentInstance inComponentInstance)
 	: AUMonotimbralInstrumentBase(inComponentInstance, 0, 1)
 {
 	CreateElements();
@@ -78,37 +78,37 @@ MyAUTemplate::MyAUTemplate(ComponentInstance inComponentInstance)
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//	MyAUTemplate::~MyAUTemplate
+//	BariInstrument::~BariInstrument
 //
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-MyAUTemplate::~MyAUTemplate()
+BariInstrument::~BariInstrument()
 {
 }
 
 
-void MyAUTemplate::Cleanup()
+void BariInstrument::Cleanup()
 {
 #if DEBUG_PRINT
-	printf("MyAUTemplate::Cleanup\n");
+	printf("BariInstrument::Cleanup\n");
 #endif
 }
 
-OSStatus MyAUTemplate::Initialize()
+OSStatus BariInstrument::Initialize()
 {	
 #if DEBUG_PRINT
-	printf("->MyAUTemplate::Initialize\n");
+	printf("->BariInstrument::Initialize\n");
 #endif
 	AUMonotimbralInstrumentBase::Initialize();
 	
 	SetNotes(kNumNotes, kMaxActiveNotes, mTestNotes, sizeof(TestNote));
 #if DEBUG_PRINT
-	printf("<-MyAUTemplate::Initialize\n");
+	printf("<-BariInstrument::Initialize\n");
 #endif
 	
 	return noErr;
 }
 
-AUElement* MyAUTemplate::CreateElement(	AudioUnitScope					scope,
+AUElement* BariInstrument::CreateElement(	AudioUnitScope					scope,
 									AudioUnitElement				element)
 {
 	switch (scope)
@@ -122,7 +122,7 @@ AUElement* MyAUTemplate::CreateElement(	AudioUnitScope					scope,
 	}
 }
 
-OSStatus			MyAUTemplate::GetParameterInfo(		AudioUnitScope					inScope,
+OSStatus			BariInstrument::GetParameterInfo(		AudioUnitScope					inScope,
 														AudioUnitParameterID			inParameterID,
 														AudioUnitParameterInfo &		outParameterInfo)
 {

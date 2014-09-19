@@ -1,6 +1,6 @@
 /*
-     File: MyAUTemplateWithMIDI.r
- Abstract: MyAUTemplateWithMIDI.r
+     File: BariInstrumentWithMIDI.r
+ Abstract: BariInstrumentWithMIDI.r
   Version: 1.2
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
@@ -45,10 +45,10 @@
  
 */
 #include <AudioUnit/AudioUnit.r>
-#include "MyAUTemplateVersion.h"
+#include "BariInstrumentVersion.h"
 
 // Note that resource IDs must be spaced 2 apart for the 'STR ' name and description
-#define kAudioUnitResID_MyAUTemplate				13472
+#define kAudioUnitResID_BariInstrument				13472
 
 // So you need to define these appropriately for your audio unit.
 // For the name the convention is to provide your company name and end it with a ':',
@@ -57,13 +57,13 @@
 // For an effect unit the Type and SubType should be left the way they are defined here...
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // AnalogSynth AudioUnit
-#define RES_ID			kAudioUnitResID_MyAUTemplate
+#define RES_ID			kAudioUnitResID_BariInstrument
 #define COMP_TYPE		kAudioUnitType_MusicDevice
-#define COMP_SUBTYPE	kMyAUTemplateSubtype
+#define COMP_SUBTYPE	kBariInstrumentSubtype
 #define COMP_MANUF		'Acme'
-#define VERSION			kMyAUTemplateVersion
-#define NAME			"Acme: MyAUTemplateWithMIDI"
-#define DESCRIPTION		"MyAUTemplate with MIDI"
-#define ENTRY_POINT		"MyAUTemplateWithMidiEntry"
+#define VERSION			kBariInstrumentVersion
+#define NAME			"Acme: BariInstrumentWithMIDI"
+#define DESCRIPTION		"BariInstrument with MIDI"
+#define ENTRY_POINT		"BariInstrumentWithMidiEntry"
 
 #include "AUResources.r"

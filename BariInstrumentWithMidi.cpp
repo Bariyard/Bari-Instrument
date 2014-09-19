@@ -1,6 +1,6 @@
 /*
-     File: MyAUTemplateWithMidi.cpp
- Abstract: MyAUTemplateWithMidi.h
+     File: BariInstrumentWithMidi.cpp
+ Abstract: BariInstrumentWithMidi.h
   Version: 1.2
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
@@ -45,13 +45,13 @@
  
 */
 /*
-	This is a subclass of MyAUTemplate that demonstrates how to use the midi output properties kAudioUnitProperty_MIDIOutputCallbackInfo, and kAudioUnitProperty_MIDIOutputCallback
-	defined in AudioUnitProperties.h. Using these properties, the MyAUTemplateWithMidi simply passes through the midi data it receives. Use of these properties requires host support.
+	This is a subclass of BariInstrument that demonstrates how to use the midi output properties kAudioUnitProperty_MIDIOutputCallbackInfo, and kAudioUnitProperty_MIDIOutputCallback
+	defined in AudioUnitProperties.h. Using these properties, the BariInstrumentWithMidi simply passes through the midi data it receives. Use of these properties requires host support.
 	
-	To build a version of the MyAUTemplate with this functionality, activate the "MyAUTemplate with MIDI Output" target in Xcode.
+	To build a version of the BariInstrument with this functionality, activate the "BariInstrument with MIDI Output" target in Xcode.
 */
 
-#include "MyAUTemplate.h"
+#include "BariInstrument.h"
 #include <CoreMidi/MIDIServices.h>
 #include <vector>
 
@@ -111,10 +111,10 @@ private:
 	MIDIMessageList				mMIDIMessageList;
 };
 
-class MyAUTemplateWithMidi : public MyAUTemplate {
+class BariInstrumentWithMidi : public BariInstrument {
 public:
-								MyAUTemplateWithMidi(ComponentInstance inComponentInstance);
-	virtual						~MyAUTemplateWithMidi();
+								BariInstrumentWithMidi(ComponentInstance inComponentInstance);
+	virtual						~BariInstrumentWithMidi();
 	
 	virtual OSStatus			GetPropertyInfo(		AudioUnitPropertyID				inID,
 														AudioUnitScope					inScope,
@@ -212,30 +212,30 @@ void MIDIOutputCallbackHelper::FireAtTimeStamp(const AudioTimeStamp &inTimeStamp
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#pragma mark MyAUTemplateWithMidi Methods
+#pragma mark BariInstrumentWithMidi Methods
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-AUDIOCOMPONENT_ENTRY(AUMusicDeviceFactory, MyAUTemplateWithMidi)
+AUDIOCOMPONENT_ENTRY(AUMusicDeviceFactory, BariInstrumentWithMidi)
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//	MyAUTemplateWithMidi::MyAUTemplateWithMidi
+//	BariInstrumentWithMidi::BariInstrumentWithMidi
 //
 // This synth has No inputs, One output
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-MyAUTemplateWithMidi::MyAUTemplateWithMidi(ComponentInstance inComponentInstance)
-	: MyAUTemplate(inComponentInstance)
+BariInstrumentWithMidi::BariInstrumentWithMidi(ComponentInstance inComponentInstance)
+	: BariInstrument(inComponentInstance)
 {
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//	MyAUTemplateWithMidi::~MyAUTemplateWithMidi
+//	BariInstrumentWithMidi::~BariInstrumentWithMidi
 //
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-MyAUTemplateWithMidi::~MyAUTemplateWithMidi()
+BariInstrumentWithMidi::~BariInstrumentWithMidi()
 {}
 
-OSStatus			MyAUTemplateWithMidi::GetPropertyInfo(		AudioUnitPropertyID				inID,
+OSStatus			BariInstrumentWithMidi::GetPropertyInfo(		AudioUnitPropertyID				inID,
 													AudioUnitScope					inScope,
 													AudioUnitElement				inElement,
 													UInt32 &						outDataSize,
@@ -252,10 +252,10 @@ OSStatus			MyAUTemplateWithMidi::GetPropertyInfo(		AudioUnitPropertyID				inID,
 			return noErr;
 		}
 	}
-	return MyAUTemplate::GetPropertyInfo (inID, inScope, inElement, outDataSize, outWritable);
+	return BariInstrument::GetPropertyInfo (inID, inScope, inElement, outDataSize, outWritable);
 }
 
-OSStatus			MyAUTemplateWithMidi::GetProperty(	AudioUnitPropertyID		inID,
+OSStatus			BariInstrumentWithMidi::GetProperty(	AudioUnitPropertyID		inID,
 											AudioUnitScope			inScope,
 											AudioUnitElement		inElement,
 											void *					outData)
@@ -271,10 +271,10 @@ OSStatus			MyAUTemplateWithMidi::GetProperty(	AudioUnitPropertyID		inID,
 			return noErr;
 		}
 	}
-	return MyAUTemplate::GetProperty (inID, inScope, inElement, outData);
+	return BariInstrument::GetProperty (inID, inScope, inElement, outData);
 }
 
-OSStatus			MyAUTemplateWithMidi::SetProperty(	AudioUnitPropertyID 			inID,
+OSStatus			BariInstrumentWithMidi::SetProperty(	AudioUnitPropertyID 			inID,
 													AudioUnitScope 					inScope,
 													AudioUnitElement 				inElement,
 													const void *					inData,
@@ -290,10 +290,10 @@ OSStatus			MyAUTemplateWithMidi::SetProperty(	AudioUnitPropertyID 			inID,
 			return noErr;
 		}
 	}
-	return MyAUTemplate::SetProperty(inID, inScope, inElement, inData, inDataSize);
+	return BariInstrument::SetProperty(inID, inScope, inElement, inData, inDataSize);
 }
 
-OSStatus 	MyAUTemplateWithMidi::HandleMidiEvent(UInt8 status, UInt8 channel, UInt8 data1, UInt8 data2, UInt32 inStartFrame) 
+OSStatus 	BariInstrumentWithMidi::HandleMidiEvent(UInt8 status, UInt8 channel, UInt8 data1, UInt8 data2, UInt32 inStartFrame) 
 {
 	// snag the midi event and then store it in a vector	
 	mCallbackHelper.AddMIDIEvent(status, channel, data1, data2, inStartFrame);
@@ -301,7 +301,7 @@ OSStatus 	MyAUTemplateWithMidi::HandleMidiEvent(UInt8 status, UInt8 channel, UIn
 	return AUMIDIBase::HandleMidiEvent(status, channel, data1, data2, inStartFrame);
 }
 
-OSStatus	MyAUTemplateWithMidi::Render(   AudioUnitRenderActionFlags &		ioActionFlags,
+OSStatus	BariInstrumentWithMidi::Render(   AudioUnitRenderActionFlags &		ioActionFlags,
 											const AudioTimeStamp &			inTimeStamp,
 											UInt32							inNumberFrames) 
 {

@@ -6,13 +6,13 @@
 	<array>
 		<dict>
 			<key>description</key>
-			<string>MyAUTemplate AudioUnit</string>
+			<string>BariInstrument AudioUnit</string>
 			<key>factoryFunction</key>
-			<string>MyAUTemplateFactory</string>
+			<string>BariInstrumentFactory</string>
 			<key>manufacturer</key>
 			<string>appl</string>
 			<key>name</key>
-			<string>Apple: MyAUTemplate</string>
+			<string>Apple: BariInstrument</string>
 			<key>sandboxSafe</key>
 			<true/>
 			<key>subtype</key>
@@ -26,15 +26,15 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>MyAUTemplate</string>
+	<string>BariInstrument</string>
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
-	<string>com.apple.audiounit.MyAUTemplate</string>
+	<string>com.apple.audiounit.BariInstrument</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>MyAUTemplate</string>
+	<string>BariInstrument</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>

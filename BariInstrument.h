@@ -1,6 +1,6 @@
 /*
-     File: MyAUTemplate.h
- Abstract: MyAUTemplate.h
+     File: BariInstrument.h
+ Abstract: BariInstrument.h
   Version: 1.2
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
@@ -45,7 +45,7 @@
  
 */
 #include "AUInstrumentBase.h"
-#include "MyAUTemplateVersion.h"
+#include "BariInstrumentVersion.h"
 
 static const UInt32 kNumNotes = 12;
 
@@ -77,15 +77,15 @@ struct TestNote : public SynthNote
 	double up_slope, dn_slope, fast_dn_slope;
 };
 
-class MyAUTemplate : public AUMonotimbralInstrumentBase
+class BariInstrument : public AUMonotimbralInstrumentBase
 {
 public:
-								MyAUTemplate(ComponentInstance inComponentInstance);
-	virtual						~MyAUTemplate();
+								BariInstrument(ComponentInstance inComponentInstance);
+	virtual						~BariInstrument();
 				
 	virtual OSStatus			Initialize();
 	virtual void				Cleanup();
-	virtual OSStatus			Version() { return kMyAUTemplateVersion; }
+	virtual OSStatus			Version() { return kBariInstrumentVersion; }
 
 	virtual AUElement*			CreateElement(			AudioUnitScope					scope,
 											  AudioUnitElement				element);
