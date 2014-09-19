@@ -10,9 +10,9 @@
 			<key>factoryFunction</key>
 			<string>BariInstrumentFactory</string>
 			<key>manufacturer</key>
-			<string>appl</string>
+			<string>Prkd</string>
 			<key>name</key>
-			<string>Apple: BariInstrument</string>
+			<string>Poorkids: BariInstrument</string>
 			<key>sandboxSafe</key>
 			<true/>
 			<key>subtype</key>
@@ -30,7 +30,7 @@
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
-	<string>com.apple.audiounit.BariInstrument</string>
+	<string>com.prkd.audiounit.BariInstrument</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -42,7 +42,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.2</string>
+	<string>1.0</string>
 	<key>CSResourcesFileMapped</key>
 	<true/>
 </dict>

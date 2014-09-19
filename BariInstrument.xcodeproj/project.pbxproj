@@ -799,6 +799,7 @@
 		A919E32D088DC18A008B8742 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_CFLAGS = "-DCA_AUTO_MIDI_MAP=1";
 				SDKROOT = macosx;
